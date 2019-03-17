@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">FilmSeries</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="Search">Search:</string>
+    <string name="Login">Login</string>
+    <string name="Favorites">Favorites</string>
+    <string name="Settings">Settings</string>
+    <string name="Welcome">Welcome</string>
+    <string name="SearchByTitle">Search by title</string>
+    <string name="Password">Password</string>
+    <string name="noAccountYet">No account yet? Create one</string>
+    <string name="Name">Name</string>
+    <string name="CreateAccount">Create account</string>
+    <string name="AlreadyMember">Already a member? Login</string>
+    <string name="Summary">Summary</string>
+    <string name="Trailers">Trailers</string>
+    <string name="Reviews">Review</string>
+    <string name="currentLanguage">english</string>
+    <string name="noReview">No reviews in english for now.</string>
+    <string name="notSeen">I haven\'t seen it</string>
+    <string name="seen">I watched it</string>
+</resources>
