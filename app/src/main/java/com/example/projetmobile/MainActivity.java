@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String sortBy = MoviesRepository.POPULAR;
 
-    private EditText searchEdit;
+    private SearchView searchEdit;
 
     private Button buttonClear;
 
@@ -93,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
         controller = AnimationUtils.loadLayoutAnimation(recyContext, R.anim.layout_fall_down);
 
         searchEdit = findViewById(R.id.searchEdit);
-
-        buttonClear = findViewById(R.id.buttonClear);
 
         textView3 = findViewById(R.id.textView3);
 
@@ -146,30 +145,30 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
 
-        searchEdit.addTextChangedListener(new TextWatcher() {
+        searchEdit.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length()!=0)
+            public boolean onQueryTextSubmit(String query) {
+                if(searchEdit.getQuery().length() != 0)
                 {
-                    getSearchRes(s.toString());
+                    getSearchRes(searchEdit.getQuery().toString());
                 }
-
+                else{
+                    getMovies(1);
+                }
+                return false;
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public boolean onQueryTextChange(String newText) {
+                if (searchEdit.getQuery().length() == 0) {
+                    getMovies(1);
+                }
+                else{
+                    getSearchRes(searchEdit.getQuery().toString());
+                }
+                return false;
             }
-        });
 
-        buttonClear.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                searchEdit.setText("");
-                getMovies(1);
-            }
         });
 
         if(moviesRepository.languageEN)
@@ -274,6 +273,7 @@ public class MainActivity extends AppCompatActivity {
         if(moviesRepository.languageEN)
         {
             textView3.setVisibility(View.INVISIBLE);
+            textView3.setHeight(0);
         }
     }
 

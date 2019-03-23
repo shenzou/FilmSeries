@@ -19,51 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/searchEdit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:iconifiedByDefault="false"
+                android:queryHint="@string/SearchByTitle"
+                app:iconifiedByDefault="false"
+                app:queryHint="@string/SearchByTitle" />
+
+
+        </android.support.v7.widget.Toolbar>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="55dp">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Search"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/searchEdit"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/searchEdit" />
-
-            <EditText
-                android:id="@+id/searchEdit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:ems="10"
-                android:hint="@string/SearchByTitle"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/buttonClear"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/buttonClear"
-                style="@style/Widget.AppCompat.Button.Small"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/ic_clear"
-                app:layout_constraintBottom_toBottomOf="@+id/searchEdit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/searchEdit" />
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout"
@@ -72,7 +45,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchEdit">
+                app:layout_constraintTop_toTopOf="parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/movies_list"
@@ -82,7 +55,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/textView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/searchEdit" >
+                app:layout_constraintTop_toTopOf="parent" >
 
 
             </android.support.v7.widget.RecyclerView>
